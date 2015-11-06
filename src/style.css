@@ -110,6 +110,8 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  text-shadow: 1px 3px rgba(0, 0, 0, 0.4);
 }
 .results .tally {
   flex: 1;
@@ -126,6 +128,8 @@ body {
 
 .results .tally h1 {
   width: 25%;
+  font-weight: 400;
+  letter-spacing: 0.1em;
 }
 .results .tally .voteVisualization {
   height: 50px;
@@ -157,6 +161,7 @@ body {
 }
 .results .management .next {
   flex: 1;
+  font-size: 2em;
 }
 
 /* Winner View */
