@@ -14,6 +14,9 @@ export default React.createClass({
   hasVotedFor: function(entry) {
     return this.props.hasVoted === entry;
   },
+  hasNotVotedFor: function(entry) {
+    return (this.props.hasVoted && this.props.hasVoted != entry);
+  },
   render: function() {
     return <div className="voting">
       <p className="round">
@@ -22,15 +25,18 @@ export default React.createClass({
       </p>
       {this.getPair().map(entry =>
         <button key={entry}
-                className={classNames({voted: this.hasVotedFor(entry)})}
+                className={classNames({voted: this.hasVotedFor(entry), notvoted: this.hasNotVotedFor(entry)})}
                 disabled={this.isDisabled()}
                 onClick={() => this.props.vote(entry)}>
-          <h1>{entry}</h1>
+          <div className="entry">{entry}</div>
           {this.hasVotedFor(entry) ?
             <div className="label">Voted</div> :
             null}
         </button>
       )}
+      <p className="vs">
+        vs
+      </p>
     </div>;
   }
 });

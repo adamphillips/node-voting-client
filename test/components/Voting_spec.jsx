@@ -55,6 +55,27 @@ describe('Voting', () => {
     expect(buttons[0].textContent).to.contain('Voted');
   });
 
+  it('adds voted class to the voted entry', () => {
+    const component = renderIntoDocument(
+      <Voting pair={["Trainspotting", "28 Days Later"]}
+              hasVoted="Trainspotting" />
+    );
+    const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+
+    expect(buttons[0].className).to.contain('voted');
+    expect(buttons[0].className).to.not.contain('notvoted');
+  });
+
+  it('adds notvoted class to the entry that was not voted for', () => {
+    const component = renderIntoDocument(
+      <Voting pair={["Trainspotting", "28 Days Later"]}
+              hasVoted="Trainspotting" />
+    );
+    const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+
+    expect(buttons[1].className).to.contain('notvoted');
+  });
+
   it('renders just the winner when there is one', () => {
     const component = renderIntoDocument(
       <Voting winner="Trainspotting" />
