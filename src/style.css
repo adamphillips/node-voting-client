@@ -6,6 +6,40 @@ body {
 
 /* Voting Screen */
 
+.captain-america {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087/portrait_xlarge.jpg);
+}
+.iron-man {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55/portrait_xlarge.jpg);
+}
+.black-widow {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/f/30/50fecad1f395b/portrait_xlarge.jpg);
+}
+.thor {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350/portrait_xlarge.jpg);
+}
+.ultron {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/3/70/5261a838e93c0/portrait_xlarge.jpg);
+}
+.spiderman {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b/portrait_xlarge.jpg);
+}
+.wolverine {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf/portrait_xlarge.jpg);
+}
+.cyclops {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/6/70/526547e2d90ad/portrait_xlarge.jpg);
+}
+.hulk {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0/portrait_xlarge.jpg);
+}
+.hawkeye {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/e/90/50fecaf4f101b/portrait_xlarge.jpg);
+}
+.vision {
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/9/d0/5111527040594/portrait_xlarge.jpg);
+}
+
 .voting {
   position: fixed;
   top: 0;
@@ -27,14 +61,19 @@ body {
   text-shadow: 1px 4px rgba(0, 0, 0, 0.6);
   font-size: 1.4em;
   letter-spacing: .15em;
-  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_xlarge.jpg);
   background-blend-mode: multiply;
   background-size:cover;
+  position: relative;
+  padding: 0;
 }
 
 .voting button .entry {
   font-size: 2em;
   font-weight: 400;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .voting button:active {
@@ -42,6 +81,9 @@ body {
 }
 .voting button.voted {
   background-color: #cccccc;
+}
+.voting button.notvoted {
+  background-color: #900;
 }
 .voting button.notvoted * {
   opacity: 0.5;
@@ -68,7 +110,8 @@ body {
   top: 20px;
   font-size: 2em;
   border-radius: 10px;
-  box-shadow: 0px 3px rgba(0, 0, 0, 0.4)
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.4);
+  z-index: 100;
 }
 
 .voting .round .label {
