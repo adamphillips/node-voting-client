@@ -76,6 +76,16 @@ describe('Voting', () => {
     expect(buttons[1].className).to.contain('notvoted');
   });
 
+  it('should add a class derived from the entry', () => {
+    const component = renderIntoDocument(
+      <Voting pair={["Trainspotting", "28 Days Later"]} />
+    );
+    const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+
+    expect(buttons[0].className).to.contain('trainspotting');
+    expect(buttons[1].className).to.contain('28-days-later');
+  });
+
   it('renders just the winner when there is one', () => {
     const component = renderIntoDocument(
       <Voting winner="Trainspotting" />

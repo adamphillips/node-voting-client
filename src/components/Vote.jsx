@@ -5,6 +5,9 @@ import classNames from 'classnames'
 export default React.createClass({
   mixins: [PureRenderMixin],
 
+  classnameForEntry: function(entry) {
+    return entry.toLowerCase().replace(/ /g, '-');
+  },
   getPair: function() {
     return this.props.pair || [];
   },
@@ -25,7 +28,7 @@ export default React.createClass({
       </p>
       {this.getPair().map(entry =>
         <button key={entry}
-                className={classNames({voted: this.hasVotedFor(entry), notvoted: this.hasNotVotedFor(entry)})}
+                className={classNames(this.classnameForEntry(entry), {voted: this.hasVotedFor(entry), notvoted: this.hasNotVotedFor(entry)})}
                 disabled={this.isDisabled()}
                 onClick={() => this.props.vote(entry)}>
           <div className="entry">{entry}</div>
