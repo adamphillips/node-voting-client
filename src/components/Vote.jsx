@@ -16,6 +16,10 @@ export default React.createClass({
   },
   render: function() {
     return <div className="voting">
+      <p className="round">
+        <span className="label">Round</span>
+        {this.props.round}
+      </p>
       {this.getPair().map(entry =>
         <button key={entry}
                 className={classNames({voted: this.hasVotedFor(entry)})}
