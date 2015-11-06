@@ -70,6 +70,7 @@ describe('reducer', () => {
   it('handles VOTE by setting hasVoted', () => {
     const state = fromJS({
       vote: {
+        round: 2,
         pair: ['Trainspotting', '28 Days Later'],
         tally: {Trainspotting: 1}
       }
@@ -79,16 +80,21 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       vote: {
+        round: 2,
         pair: ['Trainspotting', '28 Days Later'],
         tally: {Trainspotting: 1}
       },
-      hasVoted: 'Trainspotting'
+      votedFor: {
+        round: 2,
+        entry: 'Trainspotting'
+      }
     }));
   });
 
-  it('does not set hasVoted for VOTE on invalid entry', () => {
+  it('does not set votedFor on VOTE on invalid entry', () => {
     const state = fromJS({
       vote: {
+        round: 2,
         pair: ['Trainspotting', '28 Days Later'],
         tally: {Trainspotting: 1}
       }
@@ -98,32 +104,38 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       vote: {
+        round: 2,
         pair: ['Trainspotting', '28 Days Later'],
         tally: {Trainspotting: 1}
       }
     }));
   });
 
-  it('removes hasVoted on SET_STATE if pair changes', () => {
+  it('removes votedFor on SET_STATE if round changes', () => {
     const initialState = fromJS({
       vote: {
+        round: 2,
         pair: ['Trainspotting', '28 Days Later'],
         tally: {Trainspotting: 1}
       },
-      hasVoted: 'Trainspotting'
+      votedFor: {
+        round: 2,
+        entry: 'Trainspotting'
+      }
     });
     const action = {
       type: 'SET_STATE',
       state: {
         vote: {
+          round: 3,
           pair: ['Sunshine', 'Slumdog Millionaire']
         }
       }
     };
     const nextState = reducer(initialState, action);
-
     expect(nextState).to.equal(fromJS({
       vote: {
+        round: 3,
         pair: ['Sunshine', 'Slumdog Millionaire']
       }
     }));
