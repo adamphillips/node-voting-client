@@ -25,6 +25,18 @@ describe('Results', () => {
     expect(days).to.contain('0');
   });
 
+  it ('adds classes for the thumbnails', () => {
+    const pair = List.of('Trainspotting', '28 Days Later');
+    const tally = Map({'Trainspotting': 5});
+    const component = renderIntoDocument(
+      <Results pair={pair} tally={tally} />
+    );
+    const thumbnails = scryRenderedDOMComponentsWithClass(component, 'thumbnail');
+
+    expect(thumbnails[0].className).to.contain('trainspotting');
+    expect(thumbnails[1].className).to.contain('28-days-later');
+  });
+
   it('invokes the next callback when next button is clicked', () => {
     let nextInvoked = false;
     const next = () => nextInvoked = true;
