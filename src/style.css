@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: bangers, sans-serif;
   background-color: #673AB7;
   color: white;
 }
@@ -22,21 +22,32 @@ body {
 .voting button {
   flex: 1 0 0;
 
-  background-color: #673AB7;
+  background-color: #666;
   border-width: 0;
+  text-shadow: 1px 4px rgba(0, 0, 0, 0.6);
+  font-size: 1.4em;
+  letter-spacing: .15em;
+  background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_xlarge.jpg);
+  background-blend-mode: multiply;
+  background-size:cover;
 }
-.voting button:nth-child(2) {
-  border-bottom: 1px solid white;
+
+.voting button .entry {
+  font-size: 2em;
+  font-weight: 400;
 }
+
 .voting button:active {
-  background-color: white;
   color: #311B92;
 }
 .voting button.voted {
-  background-color: #311B92;
+  background-color: #cccccc;
 }
-.voting button:not(.voted) .label {
-  visibility: hidden;
+.voting button.notvoted * {
+  opacity: 0.5;
+}
+.voting button .label {
+  display: none;
 }
 .voting button .label {
   opacity: 0.87;
@@ -62,19 +73,29 @@ body {
 
 .voting .round .label {
   display: block;
-  font-size: 0.2em;
+  font-size: 0.4em;
   text-transform: uppercase;
   margin-bottom: 0px;
-  box-shadow: 1px 1px rgba(0, 0, 0, 1)
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.voting .vs {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  height: 50px;
+  width: 50px;
+  font-size: 2em;
+  left: 50%;
+  margin-left: -25px;
+  text-align: center;
+  text-shadow: 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 @media only screen and (min-device-width: 500px) {
   .voting {
     flex-direction: row;
-  }
-  .voting button:nth-child(2) {
-    border-bottom-width: 0;
-    border-right: 1px solid white;
   }
 }
 
