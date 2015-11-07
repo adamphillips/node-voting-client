@@ -6,8 +6,6 @@ import classNames from 'classnames'
 import * as actionCreators from '../action_creators';
 import {classnameForEntry} from '../utilities';
 
-export const VOTE_WIDTH_PERCENT = 8;
-
 export const Results = React.createClass({
   mixins: [PureRenderMixin],
 
@@ -22,8 +20,23 @@ export const Results = React.createClass({
     return 0;
   },
 
+  getMaxVotes: function() {
+    const voteCounts = this.getPair()
+                       .map(entry => this.getVotes(entry))
+                       .toJS();
+    return Math.max(...voteCounts);
+  },
+
   getVotesBlockWidth: function(entry) {
-    return (this.getVotes(entry) * VOTE_WIDTH_PERCENT) + '%';
+    return (this.getVotesRatio(entry) * 100) + '%';
+  },
+
+  getVotesOpacity: function(entry) {
+    return (this.getVotesRatio(entry) / 2) + 0.5;
+  },
+
+  getVotesRatio: function(entry) {
+    return this.getVotes(entry) / this.getMaxVotes();
   },
 
   render: function() {
@@ -37,7 +50,10 @@ export const Results = React.createClass({
             <h1>{entry}</h1>
             <div className="voteVisualization">
               <div className="votesBlock"
-                   style={{width: this.getVotesBlockWidth(entry)}}>
+                   style={{
+                      width: this.getVotesBlockWidth(entry),
+                      opacity: this.getVotesOpacity(entry)
+                    }}>
               </div>
             </div>
             <div className="voteCount">
