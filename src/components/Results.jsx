@@ -4,15 +4,12 @@ import {connect} from 'react-redux';
 import Winner from './Winner';
 import classNames from 'classnames'
 import * as actionCreators from '../action_creators';
+import {classnameForEntry} from '../utilities';
 
 export const VOTE_WIDTH_PERCENT = 8;
 
 export const Results = React.createClass({
   mixins: [PureRenderMixin],
-
-  classnameForEntry: function(entry) {
-    return entry.toLowerCase().replace(/ /g, '-');
-  },
 
   getPair: function() {
     return this.props.pair || [];
@@ -36,7 +33,7 @@ export const Results = React.createClass({
         <div className="tally">
         {this.getPair().map(entry =>
           <div key={entry} className="entry">
-            <span className={classNames('thumbnail', this.classnameForEntry(entry))}></span>
+            <span className={classNames('thumbnail', classnameForEntry(entry))}></span>
             <h1>{entry}</h1>
             <div className="voteVisualization">
               <div className="votesBlock"

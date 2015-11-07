@@ -83,7 +83,6 @@ describe('Voting', () => {
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
     expect(buttons[0].className).to.contain('trainspotting');
-    expect(buttons[1].className).to.contain('28-days-later');
   });
 
   it('renders just the winner when there is one', () => {

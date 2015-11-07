@@ -34,7 +34,6 @@ describe('Results', () => {
     const thumbnails = scryRenderedDOMComponentsWithClass(component, 'thumbnail');
 
     expect(thumbnails[0].className).to.contain('trainspotting');
-    expect(thumbnails[1].className).to.contain('28-days-later');
   });
 
   it('invokes the next callback when next button is clicked', () => {
